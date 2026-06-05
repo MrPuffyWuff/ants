@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://byoyllbmhibda"]
+
+[ext_resource type="Script" uid="uid://c3k2fho87psqk" path="res://gates/xnor_gate.gd" id="1_3w3e5"]
+[ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="2_bkm1p"]
+
+[sub_resource type="Resource" id="Resource_nh18f"]
+script = ExtResource("2_bkm1p")
+truth_table = Dictionary[Vector2i, int]({
+Vector2i(0, 0): 1,
+Vector2i(0, 1): 0,
+Vector2i(1, 0): 0,
+Vector2i(1, 1): 1
+})
+metadata/_custom_type_script = "uid://buf8tp4wdejta"
+
+[node name="XnorGate" type="Node2D" unique_id=2099609507]
+script = ExtResource("1_3w3e5")
+identity = SubResource("Resource_nh18f")
