@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://dlvg1subgyghu"]
 
-[ext_resource type="Script" uid="uid://clibnwlmbo15x" path="res://gates/or_gate.gd" id="1_ynnou"]
+[ext_resource type="Script" uid="uid://clibnwlmbo15x" path="res://gates/or/or_gate.gd" id="1_ynnou"]
 [ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="2_reg3i"]
+[ext_resource type="PackedScene" uid="uid://br3u3jtidydwn" path="res://gates/gate_component.tscn" id="3_vxd2t"]
 
 [sub_resource type="Resource" id="Resource_bem8c"]
 script = ExtResource("2_reg3i")
+gate_label = "OR"
 truth_table = Dictionary[Vector2i, int]({
 Vector2i(0, 0): 0,
 Vector2i(0, 1): 1,
@@ -16,3 +18,5 @@ metadata/_custom_type_script = "uid://buf8tp4wdejta"
 [node name="OrGate" type="Node2D" unique_id=1305779400]
 script = ExtResource("1_ynnou")
 identity = SubResource("Resource_bem8c")
+
+[node name="GateComponent" parent="." unique_id=1591935800 instance=ExtResource("3_vxd2t")]

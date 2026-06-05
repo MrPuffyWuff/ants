@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://f8getimhgmxd"]
 
-[ext_resource type="Script" uid="uid://bkring55gieb" path="res://gates/not_gate.gd" id="1_2ffy5"]
+[ext_resource type="Script" uid="uid://bkring55gieb" path="res://gates/not/not_gate.gd" id="1_2ffy5"]
 [ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="2_7wk21"]
 [ext_resource type="PackedScene" uid="uid://br3u3jtidydwn" path="res://gates/gate_component.tscn" id="3_nekow"]
 

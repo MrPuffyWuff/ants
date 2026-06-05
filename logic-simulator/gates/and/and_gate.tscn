@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bl2ry2w6woorn"]
 
-[ext_resource type="Script" uid="uid://dvv1p36ph8cgx" path="res://gates/and_gate.gd" id="1_8iqmd"]
+[ext_resource type="Script" uid="uid://dvv1p36ph8cgx" path="res://gates/and/and_gate.gd" id="1_8iqmd"]
 [ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="2_t3ejc"]
+[ext_resource type="PackedScene" uid="uid://br3u3jtidydwn" path="res://gates/gate_component.tscn" id="3_k31kx"]
 
 [sub_resource type="Resource" id="Resource_7c01e"]
 script = ExtResource("2_t3ejc")
@@ -17,3 +18,5 @@ metadata/_custom_type_script = "uid://buf8tp4wdejta"
 [node name="AndGate" type="Node2D" unique_id=904038480]
 script = ExtResource("1_8iqmd")
 identity = SubResource("Resource_7c01e")
+
+[node name="GateComponent" parent="." unique_id=1591935800 instance=ExtResource("3_k31kx")]

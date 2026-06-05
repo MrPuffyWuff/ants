@@ -1,20 +1,32 @@
 [gd_scene format=3 uid="uid://b1reglyibb32m"]
 
-[ext_resource type="PackedScene" uid="uid://f8getimhgmxd" path="res://gates/not_gate.tscn" id="1_53q0u"]
+[ext_resource type="PackedScene" uid="uid://f8getimhgmxd" path="res://gates/not/not_gate.tscn" id="1_53q0u"]
+[ext_resource type="PackedScene" uid="uid://dmv414xe17y2g" path="res://gates/xor/xor_gate.tscn" id="2_3wy1v"]
+[ext_resource type="PackedScene" uid="uid://cjhqdwvigtynm" path="res://gates/nor/nor_gate.tscn" id="3_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://dlvg1subgyghu" path="res://gates/or/or_gate.tscn" id="4_4dugh"]
+[ext_resource type="PackedScene" uid="uid://byoyllbmhibda" path="res://gates/xnor/xnor_gate.tscn" id="5_67ri8"]
 
 [node name="Main" type="Node2D" unique_id=1819218994]
 
 [node name="NotGate" parent="." unique_id=1657227022 instance=ExtResource("1_53q0u")]
 position = Vector2(43, 37)
 
-[node name="NotGate2" parent="." unique_id=689792476 node_paths=PackedStringArray("input_1") instance=ExtResource("1_53q0u")]
-position = Vector2(405, 108)
+[node name="XorGate" parent="." unique_id=219960486 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("2_3wy1v")]
+position = Vector2(595, 110)
+input_1 = NodePath("../NorGate")
+input_2 = NodePath("../NotGate")
+
+[node name="NorGate" parent="." unique_id=1070431749 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("3_kfbq2")]
+position = Vector2(349, 443)
 input_1 = NodePath("../NotGate")
+input_2 = NodePath(".")
 
-[node name="NotGate3" parent="." unique_id=1528353404 node_paths=PackedStringArray("input_1") instance=ExtResource("1_53q0u")]
-position = Vector2(610, 131)
-input_1 = NodePath("../NotGate2")
+[node name="OrGate" parent="." unique_id=1305779400 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("4_4dugh")]
+position = Vector2(120, 207)
+input_1 = NodePath("../XnorGate")
+input_2 = NodePath("../NorGate")
 
-[node name="NotGate4" parent="." unique_id=955922810 node_paths=PackedStringArray("input_1") instance=ExtResource("1_53q0u")]
-position = Vector2(504, 390)
-input_1 = NodePath("../NotGate3")
+[node name="XnorGate" parent="." unique_id=2099609507 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("5_67ri8")]
+position = Vector2(657, 301)
+input_1 = NodePath(".")
+input_2 = NodePath("../NotGate")

@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://o35jm7a1wgxw"]
 
-[ext_resource type="Script" uid="uid://cukx5v125knm2" path="res://gates/nand_gate.gd" id="1_bh6qh"]
+[ext_resource type="Script" uid="uid://cukx5v125knm2" path="res://gates/nand/nand_gate.gd" id="1_bh6qh"]
 [ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="2_qft6q"]
+[ext_resource type="PackedScene" uid="uid://br3u3jtidydwn" path="res://gates/gate_component.tscn" id="3_pq5ao"]
 
 [sub_resource type="Resource" id="Resource_r0u3v"]
 script = ExtResource("2_qft6q")
+gate_label = "NAND"
 truth_table = Dictionary[Vector2i, int]({
 Vector2i(0, 0): 1,
 Vector2i(0, 1): 1,
@@ -16,3 +18,5 @@ metadata/_custom_type_script = "uid://buf8tp4wdejta"
 [node name="NandGate" type="Node2D" unique_id=807948745]
 script = ExtResource("1_bh6qh")
 identity = SubResource("Resource_r0u3v")
+
+[node name="GateComponent" parent="." unique_id=1591935800 instance=ExtResource("3_pq5ao")]
