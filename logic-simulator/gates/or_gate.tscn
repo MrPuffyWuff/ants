@@ -5,11 +5,11 @@
 
 [sub_resource type="Resource" id="Resource_bem8c"]
 script = ExtResource("2_reg3i")
-truth_table = Dictionary[Array, int]({
-[0, 0]: 0,
-[0, 1]: 1,
-[1, 0]: 1,
-[1, 1]: 1
+truth_table = Dictionary[Vector2i, int]({
+Vector2i(0, 0): 0,
+Vector2i(0, 1): 1,
+Vector2i(1, 0): 1,
+Vector2i(1, 1): 1
 })
 metadata/_custom_type_script = "uid://buf8tp4wdejta"
 

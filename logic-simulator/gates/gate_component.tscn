@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://br3u3jtidydwn"]
+
+[ext_resource type="Script" uid="uid://cb3ajx3hef5t8" path="res://gates/gate_component.gd" id="1_dela0"]
+
+[node name="GateComponent" type="Node2D" unique_id=1591935800]
+script = ExtResource("1_dela0")
