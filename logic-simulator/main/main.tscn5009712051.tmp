@@ -14,7 +14,3 @@ input_1 = NodePath("../NotGate")
 [node name="NotGate3" parent="." unique_id=1528353404 node_paths=PackedStringArray("input_1") instance=ExtResource("1_53q0u")]
 position = Vector2(610, 131)
 input_1 = NodePath("../NotGate2")
-
-[node name="NotGate4" parent="." unique_id=955922810 node_paths=PackedStringArray("input_1") instance=ExtResource("1_53q0u")]
-position = Vector2(504, 390)
-input_1 = NodePath("../NotGate3")

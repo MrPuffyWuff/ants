@@ -2,8 +2,8 @@ extends Node2D
 
 @export var identity : Identity
 
-var input_1 : Node2D
-var input_2 : Node2D
+@export var input_1 : Node2D
+@export var input_2 : Node2D
 
 var output : int = 0
 
