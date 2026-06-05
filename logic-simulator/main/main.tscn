@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cjhqdwvigtynm" path="res://gates/nor/nor_gate.tscn" id="3_kfbq2"]
 [ext_resource type="PackedScene" uid="uid://dlvg1subgyghu" path="res://gates/or/or_gate.tscn" id="4_4dugh"]
 [ext_resource type="PackedScene" uid="uid://byoyllbmhibda" path="res://gates/xnor/xnor_gate.tscn" id="5_67ri8"]
+[ext_resource type="PackedScene" uid="uid://0geuj3te5rbl" path="res://gates/power_syms/ground_node.tscn" id="6_4dugh"]
+[ext_resource type="PackedScene" uid="uid://ccr4uy3u3ugs1" path="res://gates/power_syms/power_node.tscn" id="6_kfbq2"]
 
 [node name="Main" type="Node2D" unique_id=1819218994]
 
@@ -30,3 +32,9 @@ input_2 = NodePath("../NorGate")
 position = Vector2(657, 301)
 input_1 = NodePath(".")
 input_2 = NodePath("../NotGate")
+
+[node name="GroundNode" parent="." unique_id=1728609067 instance=ExtResource("6_4dugh")]
+position = Vector2(158, 384)
+
+[node name="PowerNode" parent="." unique_id=1072166286 instance=ExtResource("6_kfbq2")]
+position = Vector2(344, 134)
