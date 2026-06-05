@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://o35jm7a1wgxw"]
+
+[ext_resource type="Script" uid="uid://cukx5v125knm2" path="res://gates/nand_gate.gd" id="1_bh6qh"]
+[ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="2_qft6q"]
+
+[sub_resource type="Resource" id="Resource_r0u3v"]
+script = ExtResource("2_qft6q")
+truth_table = Dictionary[Array, int]({
+[0, 0]: 1,
+[0, 1]: 1,
+[1, 0]: 1,
+[1, 1]: 0
+})
+metadata/_custom_type_script = "uid://buf8tp4wdejta"
+
+[node name="NandGate" type="Node2D" unique_id=807948745]
+script = ExtResource("1_bh6qh")
+identity = SubResource("Resource_r0u3v")

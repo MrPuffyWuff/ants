@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dmv414xe17y2g"]
+
+[ext_resource type="Script" uid="uid://byt5wu60qbsqp" path="res://gates/xor_gate.gd" id="1_i72ff"]
+[ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="2_4wig0"]
+
+[sub_resource type="Resource" id="Resource_5wgxm"]
+script = ExtResource("2_4wig0")
+truth_table = Dictionary[Array, int]({
+[0, 0]: 0,
+[0, 1]: 1,
+[1, 0]: 1,
+[1, 1]: 0
+})
+metadata/_custom_type_script = "uid://buf8tp4wdejta"
+
+[node name="XorGate" type="Node2D" unique_id=219960486]
+script = ExtResource("1_i72ff")
+identity = SubResource("Resource_5wgxm")
