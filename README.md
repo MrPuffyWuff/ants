@@ -1,2 +1,3 @@
-# ants
-mAcro Numerical Transistor System - A high school CPU project
+# ANTS (mAcro Numerical Transistor System)
+
+A custom CPU, from scratch. Made with transistors and pain.
