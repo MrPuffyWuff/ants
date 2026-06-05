@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var parent : Node2D = get_parent()
 
+var dragging: bool = false
+
 func _ready() -> void:
 	if parent.identity.gate_label == "LOW":
 		$ColorRect.color = Color.BLACK
@@ -13,6 +15,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("redraw"):
 		queue_redraw()
+	
+	if dragging:
+		parent.position = get_global_mouse_position()
 
 func _draw():
 	if parent.input_1 != null:
@@ -21,3 +26,8 @@ func _draw():
 	if parent.input_2 != null:
 		var color = Color.BROWN if parent.input_2.output == 1 else Color.DIM_GRAY
 		draw_line(Vector2.ZERO, parent.input_2.global_position - parent.global_position, color, 2.0)
+
+
+func _on_color_rect_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		dragging = event.pressed
