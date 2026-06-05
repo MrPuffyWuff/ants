@@ -1,10 +1,6 @@
-extends Node
+extends Node2D
 
-@export var gate_label : String = "Unnamed"
-@export var truth_table : Dictionary[Array, int] = {
-	[1] : 1,
-	[0] : 0,
-}
+@export var identity : Identity
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
