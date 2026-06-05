@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dlvg1subgyghu"]
+
+[ext_resource type="Script" uid="uid://clibnwlmbo15x" path="res://gates/or_gate.gd" id="1_ynnou"]
+[ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="2_reg3i"]
+
+[sub_resource type="Resource" id="Resource_bem8c"]
+script = ExtResource("2_reg3i")
+truth_table = Dictionary[Array, int]({
+[0, 0]: 0,
+[0, 1]: 1,
+[1, 0]: 1,
+[1, 1]: 1
+})
+metadata/_custom_type_script = "uid://buf8tp4wdejta"
+
+[node name="OrGate" type="Node2D" unique_id=1305779400]
+script = ExtResource("1_ynnou")
+identity = SubResource("Resource_bem8c")
