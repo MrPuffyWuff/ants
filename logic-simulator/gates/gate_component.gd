@@ -49,11 +49,11 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 				$ColorRect.color = Color.DARK_GRAY.darkened(0.80)
 				parent.identity.gate_label = "LOW"
 				$ColorRect/Name.text = parent.identity.gate_label
-				parent.identity.truth_table[Vector2i(0, 0)] = 0
-				parent.identity.truth_table[Vector2i(1, 0)] = 0
+				parent.truth_table[Vector2i(0, 0)] = 0
+				parent.truth_table[Vector2i(1, 0)] = 0
 			elif parent.identity.gate_label == "LOW":
 				$ColorRect.color = Color.RED.lightened(0.20)
 				parent.identity.gate_label = "HIGH"
 				$ColorRect/Name.text = parent.identity.gate_label
-				parent.identity.truth_table[Vector2i(0, 0)] = 1
-				parent.identity.truth_table[Vector2i(1, 0)] = 1
+				parent.truth_table[Vector2i(0, 0)] = 1
+				parent.truth_table[Vector2i(1, 0)] = 1

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bl2ry2w6woorn" path="res://gates/and/and_gate.tscn" id="3_c651c"]
 [ext_resource type="PackedScene" uid="uid://c7dewjet6nfs5" path="res://gates/identity/identity_gate.tscn" id="5_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://0geuj3te5rbl" path="res://gates/power_syms/ground_node.tscn" id="6_4dugh"]
+[ext_resource type="PackedScene" uid="uid://o35jm7a1wgxw" path="res://gates/nand/nand_gate.tscn" id="6_67ri8"]
 [ext_resource type="PackedScene" uid="uid://ccr4uy3u3ugs1" path="res://gates/power_syms/power_node.tscn" id="6_kfbq2"]
 
 [node name="Main" type="Node2D" unique_id=1819218994]
@@ -11,7 +12,10 @@
 [node name="GroundNode" parent="." unique_id=1728609067 instance=ExtResource("6_4dugh")]
 position = Vector2(150, 363)
 
-[node name="PowerNode" parent="." unique_id=1072166286 instance=ExtResource("6_kfbq2")]
+[node name="PowerNode2" parent="." unique_id=1072166286 instance=ExtResource("6_kfbq2")]
+position = Vector2(146, 496)
+
+[node name="PowerNode" parent="." unique_id=1631855523 instance=ExtResource("6_kfbq2")]
 position = Vector2(155, 200)
 
 [node name="AndGate" parent="." unique_id=904038480 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("3_c651c")]
@@ -20,7 +24,7 @@ input_1 = NodePath("../GroundNode")
 input_2 = NodePath("../PowerNode")
 
 [node name="XorGate" parent="." unique_id=219960486 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("2_3wy1v")]
-position = Vector2(367, 200)
+position = Vector2(355, 195)
 input_1 = NodePath("../GroundNode")
 input_2 = NodePath("../PowerNode")
 
@@ -31,3 +35,12 @@ input_1 = NodePath("../AndGate")
 [node name="IdentityGate2" parent="." unique_id=1713290410 node_paths=PackedStringArray("input_1") instance=ExtResource("5_3wy1v")]
 position = Vector2(582, 194)
 input_1 = NodePath("../XorGate")
+
+[node name="IdentityGate3" parent="." unique_id=648879760 node_paths=PackedStringArray("input_1") instance=ExtResource("5_3wy1v")]
+position = Vector2(600, 484)
+input_1 = NodePath("../NandGate")
+
+[node name="NandGate" parent="." unique_id=807948745 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("6_67ri8")]
+position = Vector2(373, 491)
+input_1 = NodePath("../PowerNode2")
+input_2 = NodePath("../PowerNode2")
