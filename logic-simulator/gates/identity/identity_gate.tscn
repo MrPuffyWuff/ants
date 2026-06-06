@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c7dewjet6nfs5"]
+
+[ext_resource type="Script" uid="uid://btqakvih8njxc" path="res://gates/identity/identity_gate.gd" id="1_u68w4"]
+[ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="2_u5wfg"]
+[ext_resource type="PackedScene" uid="uid://br3u3jtidydwn" path="res://gates/gate_component.tscn" id="3_0kxcu"]
+
+[sub_resource type="Resource" id="Resource_3phi3"]
+script = ExtResource("2_u5wfg")
+gate_label = ""
+metadata/_custom_type_script = "uid://buf8tp4wdejta"
+
+[node name="IdentityGate" type="Node2D" unique_id=1447665301]
+script = ExtResource("1_u68w4")
+identity = SubResource("Resource_3phi3")
+
+[node name="GateComponent" parent="." unique_id=1591935800 instance=ExtResource("3_0kxcu")]
