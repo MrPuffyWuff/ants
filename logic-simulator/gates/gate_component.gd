@@ -27,14 +27,18 @@ func _draw():
 	if parent.identity.gate_label == "":
 		$ColorRect/Name.text = 'ON' if parent.input_1.output == 1 else 'OFF'
 		
-	var yShift: float = 0 if parent.identity.gate_label == "" else 0.33
+	var yShift: float = 0.0 if parent.identity.gate_label == "" else 0.33
 	
 	if parent.input_1 != null:
 		var color = Color.BROWN if parent.input_1.output == 1 else Color.DIM_GRAY
-		draw_line(Vector2(-1 * $ColorRect.size.x, -yShift * $ColorRect.size.y), parent.input_1.global_position - parent.global_position, color, 3.0)
+		var loc = Vector2(-1.10 * $ColorRect.size.x, -yShift * $ColorRect.size.y)
+		draw_line(loc, parent.input_1.global_position - parent.global_position, color, 3.0)
+		draw_primitive([loc + Vector2(0, -10), loc + Vector2(0, 10), loc + Vector2(10, 0)], [color], [])
 	if parent.input_2 != null:
 		var color = Color.BROWN if parent.input_2.output == 1 else Color.DIM_GRAY
-		draw_line(Vector2(-1 * $ColorRect.size.x, yShift * $ColorRect.size.y), parent.input_2.global_position - parent.global_position, color, 3.0)
+		var loc = Vector2(-1.10 * $ColorRect.size.x, yShift * $ColorRect.size.y)
+		draw_line(loc, parent.input_2.global_position - parent.global_position, color, 3.0)
+		draw_primitive([loc + Vector2(0, -10), loc + Vector2(0, 10), loc + Vector2(10, 0)], [color], [])
 
 func _on_color_rect_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
