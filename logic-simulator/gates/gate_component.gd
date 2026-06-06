@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var parent : Node2D = get_parent()
 
+var draggable: bool = true
 var dragging: bool = false
 
 func _ready() -> void:
@@ -12,29 +13,43 @@ func _ready() -> void:
 	elif parent.identity.gate_label == "HIGH":
 		$ColorRect.color = Color.RED.lightened(0.20)
 	$ColorRect/Name.text = parent.identity.gate_label
+	draggable = parent.identity.draggable
 	queue_redraw()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("redraw"):
 		queue_redraw()
 	
-	if dragging:
+	if dragging and draggable:
 		parent.position = get_global_mouse_position()
 
 func _draw():
 	if parent.identity.gate_label == "":
-		if parent.input_1.output == 1:
-			$ColorRect/Name.text = 'ON'
-		else:
-			$ColorRect/Name.text = 'OFF'
+		$ColorRect/Name.text = 'ON' if parent.input_1.output == 1 else 'OFF'
+		
+	var yShift: float = 0 if parent.identity.gate_label == "" else 0.33
 	
 	if parent.input_1 != null:
 		var color = Color.BROWN if parent.input_1.output == 1 else Color.DIM_GRAY
-		draw_line(Vector2(-1 * $ColorRect.size.x, 0), parent.input_1.global_position - parent.global_position, color, 3.0)
+		draw_line(Vector2(-1 * $ColorRect.size.x, -yShift * $ColorRect.size.y), parent.input_1.global_position - parent.global_position, color, 3.0)
 	if parent.input_2 != null:
 		var color = Color.BROWN if parent.input_2.output == 1 else Color.DIM_GRAY
-		draw_line(Vector2(-1 * $ColorRect.size.x, 0), parent.input_2.global_position - parent.global_position, color, 3.0)
+		draw_line(Vector2(-1 * $ColorRect.size.x, yShift * $ColorRect.size.y), parent.input_2.global_position - parent.global_position, color, 3.0)
 
 func _on_color_rect_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		dragging = event.pressed
+		
+		if event.is_released() and not draggable:
+			if parent.identity.gate_label == "HIGH":
+				$ColorRect.color = Color.DARK_GRAY.darkened(0.80)
+				parent.identity.gate_label = "LOW"
+				$ColorRect/Name.text = parent.identity.gate_label
+				parent.identity.truth_table[Vector2i(0, 0)] = 0
+				parent.identity.truth_table[Vector2i(1, 0)] = 0
+			elif parent.identity.gate_label == "LOW":
+				$ColorRect.color = Color.RED.lightened(0.20)
+				parent.identity.gate_label = "HIGH"
+				$ColorRect/Name.text = parent.identity.gate_label
+				parent.identity.truth_table[Vector2i(0, 0)] = 1
+				parent.identity.truth_table[Vector2i(1, 0)] = 1
