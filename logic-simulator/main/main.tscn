@@ -1,46 +1,31 @@
 [gd_scene format=3 uid="uid://b1reglyibb32m"]
 
 [ext_resource type="PackedScene" uid="uid://dmv414xe17y2g" path="res://gates/xor/xor_gate.tscn" id="2_3wy1v"]
-[ext_resource type="PackedScene" uid="uid://bl2ry2w6woorn" path="res://gates/and/and_gate.tscn" id="3_c651c"]
 [ext_resource type="PackedScene" uid="uid://c7dewjet6nfs5" path="res://gates/identity/identity_gate.tscn" id="5_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://0geuj3te5rbl" path="res://gates/power_syms/ground_node.tscn" id="6_4dugh"]
-[ext_resource type="PackedScene" uid="uid://o35jm7a1wgxw" path="res://gates/nand/nand_gate.tscn" id="6_67ri8"]
-[ext_resource type="PackedScene" uid="uid://ccr4uy3u3ugs1" path="res://gates/power_syms/power_node.tscn" id="6_kfbq2"]
 
 [node name="Main" type="Node2D" unique_id=1819218994]
 
-[node name="GroundNode" parent="." unique_id=1728609067 instance=ExtResource("6_4dugh")]
-position = Vector2(150, 363)
+[node name="GroundNode4" parent="." unique_id=942066029 instance=ExtResource("6_4dugh")]
+position = Vector2(207, 297)
 
-[node name="PowerNode2" parent="." unique_id=1072166286 instance=ExtResource("6_kfbq2")]
-position = Vector2(146, 496)
-
-[node name="PowerNode" parent="." unique_id=1631855523 instance=ExtResource("6_kfbq2")]
-position = Vector2(155, 200)
-
-[node name="AndGate" parent="." unique_id=904038480 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("3_c651c")]
-position = Vector2(360, 356)
-input_1 = NodePath("../GroundNode")
-input_2 = NodePath("../PowerNode")
-
-[node name="XorGate" parent="." unique_id=219960486 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("2_3wy1v")]
-position = Vector2(355, 195)
-input_1 = NodePath("../GroundNode")
-input_2 = NodePath("../PowerNode")
+[node name="GroundNode5" parent="." unique_id=753765540 instance=ExtResource("6_4dugh")]
+position = Vector2(208, 190)
 
 [node name="IdentityGate" parent="." unique_id=1447665301 node_paths=PackedStringArray("input_1") instance=ExtResource("5_3wy1v")]
-position = Vector2(593, 359)
-input_1 = NodePath("../AndGate")
+position = Vector2(859, 182)
+input_1 = NodePath("../XorGate2")
 
-[node name="IdentityGate2" parent="." unique_id=1713290410 node_paths=PackedStringArray("input_1") instance=ExtResource("5_3wy1v")]
-position = Vector2(582, 194)
+[node name="IdentityGate2" parent="." unique_id=1559262783 node_paths=PackedStringArray("input_1") instance=ExtResource("5_3wy1v")]
+position = Vector2(869, 299)
 input_1 = NodePath("../XorGate")
 
-[node name="IdentityGate3" parent="." unique_id=648879760 node_paths=PackedStringArray("input_1") instance=ExtResource("5_3wy1v")]
-position = Vector2(600, 484)
-input_1 = NodePath("../NandGate")
+[node name="XorGate2" parent="." unique_id=219960486 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("2_3wy1v")]
+position = Vector2(521, 184)
+input_1 = NodePath("../GroundNode4")
+input_2 = NodePath("../XorGate")
 
-[node name="NandGate" parent="." unique_id=807948745 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("6_67ri8")]
-position = Vector2(373, 491)
-input_1 = NodePath("../PowerNode2")
-input_2 = NodePath("../PowerNode2")
+[node name="XorGate" parent="." unique_id=1774603264 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("2_3wy1v")]
+position = Vector2(529, 293)
+input_1 = NodePath("../GroundNode5")
+input_2 = NodePath("../XorGate2")

@@ -5,6 +5,8 @@ extends Node2D
 var draggable: bool = true
 var dragging: bool = false
 
+var timeDif: float = 0.2
+
 func _ready() -> void:
 	if parent.identity.gate_label == "":
 		$ColorRect.color = Color.STEEL_BLUE
@@ -16,9 +18,11 @@ func _ready() -> void:
 	draggable = parent.identity.draggable
 	queue_redraw()
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("redraw"):
+func _process(delta: float) -> void:
+	timeDif -= delta
+	if timeDif < 0.0:
 		queue_redraw()
+		timeDif = 0.2
 	
 	if dragging and draggable:
 		parent.position = get_global_mouse_position()

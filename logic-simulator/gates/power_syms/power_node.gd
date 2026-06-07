@@ -5,7 +5,7 @@ extends Node2D
 @export var input_1 : Node2D
 @export var input_2 : Node2D
 
-@export var truth_table: Dictionary[Vector2i, int] = {Vector2i(0, 0): 1, Vector2i(1, 0): 1}
+var truth_table: Dictionary[Vector2i, int] = {Vector2i(0, 0): 1, Vector2i(1, 0): 1}
 
 var output : int = 0
 
