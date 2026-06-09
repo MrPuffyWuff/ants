@@ -19,6 +19,7 @@ func _process(_delta: float) -> void:
 	set_output()
 
 func set_output():
+	await get_tree().create_timer(randf_range(0.0, 0.2))
 	var in_1_val : int = input_1.output if input_1 != null else 0
 	var in_2_val : int = input_2.output if input_2 != null else 0
 	output = truth_table[Vector2i(in_1_val, in_2_val)]
