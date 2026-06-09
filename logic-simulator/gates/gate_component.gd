@@ -2,10 +2,9 @@ extends Node2D
 
 @onready var parent : Node2D = get_parent()
 
-var draggable: bool = true
 var dragging: bool = false
 
-var timeDif: float = 0.2
+var timeDif: float = 0.1
 
 func _ready() -> void:
 	if parent.identity.gate_label == "":
@@ -15,16 +14,15 @@ func _ready() -> void:
 	elif parent.identity.gate_label == "HIGH":
 		$ColorRect.color = Color.RED.lightened(0.20)
 	$ColorRect/Name.text = parent.identity.gate_label
-	draggable = parent.identity.draggable
 	queue_redraw()
 
 func _process(delta: float) -> void:
 	timeDif -= delta
 	if timeDif < 0.0:
 		queue_redraw()
-		timeDif = 0.2
+		timeDif = 0.1
 	
-	if dragging and draggable:
+	if dragging:
 		parent.position = get_global_mouse_position()
 
 func _draw():
@@ -46,23 +44,37 @@ func _draw():
 
 func _on_color_rect_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if parent.identity.gate_label in ["HIGH", "LOW"]:
-			if event.button_index == 1:
-				dragging = event.pressed
-			
-			elif event.button_index == 2 and event.is_released():
-				if parent.identity.gate_label == "HIGH":
-					$ColorRect.color = Color.DARK_GRAY.darkened(0.80)
-					parent.identity.gate_label = "LOW"
-					$ColorRect/Name.text = parent.identity.gate_label
-					parent.truth_table[Vector2i(0, 0)] = 0
-					parent.truth_table[Vector2i(1, 0)] = 0
-				elif parent.identity.gate_label == "LOW":
-					$ColorRect.color = Color.RED.lightened(0.20)
-					parent.identity.gate_label = "HIGH"
-					$ColorRect/Name.text = parent.identity.gate_label
-					parent.truth_table[Vector2i(0, 0)] = 1
-					parent.truth_table[Vector2i(1, 0)] = 1
-		
-		else:
+		if event.button_index == 2:
 			dragging = event.pressed
+		
+		elif event.button_index == 1 and event.is_released():
+			if parent.identity.gate_label == "":
+				pass
+			
+			if parent.identity.gate_label == "HIGH":
+				$ColorRect.color = Color.DARK_GRAY.darkened(0.80)
+				parent.identity = load("res://gates/power_syms/ground.tres")
+				$ColorRect/Name.text = parent.identity.gate_label
+			elif parent.identity.gate_label == "LOW":
+				$ColorRect.color = Color.RED.lightened(0.20)
+				parent.identity = load("res://gates/power_syms/power.tres")
+				$ColorRect/Name.text = parent.identity.gate_label
+			
+			elif parent.identity.gate_label == "AND":
+				parent.identity = load("res://gates/nand/nand.tres")
+				$ColorRect/Name.text = parent.identity.gate_label
+			elif parent.identity.gate_label == "NAND":
+				parent.identity = load("res://gates/or/or.tres")
+				$ColorRect/Name.text = parent.identity.gate_label
+			elif parent.identity.gate_label == "OR":
+				parent.identity = load("res://gates/nor/nor.tres")
+				$ColorRect/Name.text = parent.identity.gate_label
+			elif parent.identity.gate_label == "NOR":
+				parent.identity = load("res://gates/xor/xor.tres")
+				$ColorRect/Name.text = parent.identity.gate_label
+			elif parent.identity.gate_label == "XOR":
+				parent.identity = load("res://gates/xnor/xnor.tres")
+				$ColorRect/Name.text = parent.identity.gate_label
+			elif parent.identity.gate_label == "XNOR":
+				parent.identity = load("res://gates/and/and.tres")
+				$ColorRect/Name.text = parent.identity.gate_label

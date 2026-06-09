@@ -1,20 +1,11 @@
 [gd_scene format=3 uid="uid://0geuj3te5rbl"]
 
 [ext_resource type="Script" uid="uid://rgios8555agb" path="res://gates/power_syms/ground_node.gd" id="1_56bd6"]
-[ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="2_qsppv"]
+[ext_resource type="Resource" uid="uid://dhuryehc8nyon" path="res://gates/power_syms/ground.tres" id="2_qsppv"]
 [ext_resource type="PackedScene" uid="uid://br3u3jtidydwn" path="res://gates/gate_component.tscn" id="2_t233x"]
-
-[sub_resource type="Resource" id="Resource_hxop0"]
-script = ExtResource("2_qsppv")
-gate_label = "LOW"
-truth_table = Dictionary[Vector2i, int]({
-Vector2i(0, 0): 0,
-Vector2i(1, 0): 0
-})
-metadata/_custom_type_script = "uid://buf8tp4wdejta"
 
 [node name="GroundNode" type="Node2D" unique_id=1728609067]
 script = ExtResource("1_56bd6")
-identity = SubResource("Resource_hxop0")
+identity = ExtResource("2_qsppv")
 
 [node name="GateComponent" parent="." unique_id=1591935800 instance=ExtResource("2_t233x")]

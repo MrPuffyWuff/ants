@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b1reglyibb32m"]
 
 [ext_resource type="PackedScene" uid="uid://cjhqdwvigtynm" path="res://gates/nor/nor_gate.tscn" id="3_xwkvk"]
+[ext_resource type="PackedScene" uid="uid://o35jm7a1wgxw" path="res://gates/nand/nand_gate.tscn" id="4_c651c"]
 [ext_resource type="PackedScene" uid="uid://c7dewjet6nfs5" path="res://gates/identity/identity_gate.tscn" id="5_3wy1v"]
 [ext_resource type="PackedScene" uid="uid://0geuj3te5rbl" path="res://gates/power_syms/ground_node.tscn" id="6_4dugh"]
 
@@ -29,3 +30,11 @@ input_2 = NodePath("../NorGate")
 position = Vector2(499, 183)
 input_1 = NodePath("../GroundNode4")
 input_2 = NodePath("../NorGate2")
+
+[node name="GroundNode" parent="." unique_id=1728609067 instance=ExtResource("6_4dugh")]
+position = Vector2(206, 414)
+
+[node name="NandGate" parent="." unique_id=807948745 node_paths=PackedStringArray("input_1", "input_2") instance=ExtResource("4_c651c")]
+position = Vector2(499, 412)
+input_1 = NodePath("../GroundNode")
+input_2 = NodePath("../GroundNode")

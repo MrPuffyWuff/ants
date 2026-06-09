@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Identity" format=3 uid="uid://k4aacqyded85"]
+
+[ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="1_yf8ae"]
+
+[resource]
+script = ExtResource("1_yf8ae")
+gate_label = ""

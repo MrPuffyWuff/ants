@@ -7,4 +7,3 @@ class_name Identity
 	Vector2i(1,0) : 1,
 	Vector2i(0,0) : 0,
 }
-@export var draggable: bool = true

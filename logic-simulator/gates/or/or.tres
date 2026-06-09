@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Identity" format=3 uid="uid://cd68onyb8ofup"]
+
+[ext_resource type="Script" uid="uid://buf8tp4wdejta" path="res://gates/identity.gd" id="1_y2wef"]
+
+[resource]
+script = ExtResource("1_y2wef")
+gate_label = "OR"
+truth_table = Dictionary[Vector2i, int]({
+Vector2i(0, 0): 0,
+Vector2i(0, 1): 1,
+Vector2i(1, 0): 1,
+Vector2i(1, 1): 1
+})
