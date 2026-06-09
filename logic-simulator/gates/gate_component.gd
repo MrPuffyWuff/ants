@@ -46,18 +46,23 @@ func _draw():
 
 func _on_color_rect_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		dragging = event.pressed
+		if parent.identity.gate_label in ["HIGH", "LOW"]:
+			if event.button_index == 1:
+				dragging = event.pressed
+			
+			elif event.button_index == 2 and event.is_released():
+				if parent.identity.gate_label == "HIGH":
+					$ColorRect.color = Color.DARK_GRAY.darkened(0.80)
+					parent.identity.gate_label = "LOW"
+					$ColorRect/Name.text = parent.identity.gate_label
+					parent.truth_table[Vector2i(0, 0)] = 0
+					parent.truth_table[Vector2i(1, 0)] = 0
+				elif parent.identity.gate_label == "LOW":
+					$ColorRect.color = Color.RED.lightened(0.20)
+					parent.identity.gate_label = "HIGH"
+					$ColorRect/Name.text = parent.identity.gate_label
+					parent.truth_table[Vector2i(0, 0)] = 1
+					parent.truth_table[Vector2i(1, 0)] = 1
 		
-		if event.is_released() and not draggable:
-			if parent.identity.gate_label == "HIGH":
-				$ColorRect.color = Color.DARK_GRAY.darkened(0.80)
-				parent.identity.gate_label = "LOW"
-				$ColorRect/Name.text = parent.identity.gate_label
-				parent.truth_table[Vector2i(0, 0)] = 0
-				parent.truth_table[Vector2i(1, 0)] = 0
-			elif parent.identity.gate_label == "LOW":
-				$ColorRect.color = Color.RED.lightened(0.20)
-				parent.identity.gate_label = "HIGH"
-				$ColorRect/Name.text = parent.identity.gate_label
-				parent.truth_table[Vector2i(0, 0)] = 1
-				parent.truth_table[Vector2i(1, 0)] = 1
+		else:
+			dragging = event.pressed
